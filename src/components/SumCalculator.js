@@ -5,47 +5,41 @@ const SumCalculator = () => {
   const [sum, setSum] = useState(0);
   const [inputValue, setInputValue] = useState("");
 
-  // Async sum calculation to keep UI smooth
   useEffect(() => {
-    const calculateSum = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 0)); // simulate async work
-      const total = numbers.reduce((acc, num) => acc + num, 0);
-      setSum(total);
-    };
-
-    if (numbers.length > 0) {
-      calculateSum();
-    }
+    setSum(numbers.reduce((acc, val) => acc + val, 0));
   }, [numbers]);
 
-  const handleAddNumber = () => {
-    const parsedNumber = parseInt(inputValue, 10);
-    if (!isNaN(parsedNumber)) {
-      setNumbers((prev) => [...prev, parsedNumber]);
+
+
+  const handleChange = (e) => {
+    const value = parseInt(e.target.value);
+    if (!isNaN(value)) {
+      setInputValue(value);
+      setNumbers((prev) => [...prev, value]);
+    } else {
+      setInputValue("");
     }
-    setInputValue("");
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "40px" }}>
-      <h2>Sum Calculator</h2>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1 style={{ fontWeight: "bold" }}>Sum Calculator</h1>
 
       <input
         type="number"
-        placeholder="Enter a number"
         value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        style={{ padding: "8px", width: "200px" }}
+        onChange={handleChange}
+        style={{
+          padding: "8px",
+          width: "200px",
+          fontSize: "18px",
+          marginTop: "20px",
+        }}
       />
 
-      <button
-        onClick={handleAddNumber}
-        style={{ padding: "8px 12px", marginLeft: "10px" }}
-      >
-        Add Number
-      </button>
-
-      <h3 style={{ marginTop: "20px" }}>Total Sum: {sum}</h3>
+      <h3 style={{ marginTop: "20px", fontSize: "20px" }}>
+        Sum: {sum}
+      </h3>
     </div>
   );
 };

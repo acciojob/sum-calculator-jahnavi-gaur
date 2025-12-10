@@ -1,14 +1,15 @@
-import React from 'react';
+import React from "react";
 import './../styles/App.css';
 import SumCalculator from "./SumCalculator";
 
-function App() {
-  return (
+function App(){
+  return(
     <div>
-      <SumCalculator />
+     <SumCalculator />
     </div>
-  );
-}
+  ) 
+};
 
 export default App;
+
 
