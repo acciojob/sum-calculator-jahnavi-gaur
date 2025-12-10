@@ -22,7 +22,7 @@ const SumCalculator = () => {
   };
 
   return (
-    <div style={{  marginTop: "50px" }}>
+    <div style={{textAlign:"center",  marginTop: "50px" }}>
       <h1 style={{ fontWeight: "bold" }}>Sum Calculator</h1>
 
       <input
